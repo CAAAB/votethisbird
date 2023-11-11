@@ -1,0 +1,35 @@
+name: Run votebot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/10 * * * *' 
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version you are using
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+        pip install Faker
+        pip install google-api-python-client
+        pip install google-auth-oauthlib
+        pip install google-auth-httplib2
+
+    - name: Create token.json file
+      run: echo '${{ secrets.GOOGLE_TOKEN_JSON }}' > token.json
+
+    - name: Run script
+      run: python votebot.py  # Replace with your script's filename
+
+    # Optional: Add more steps if needed
