@@ -30,6 +30,6 @@ jobs:
       run: echo '${{ secrets.GOOGLE_TOKEN_JSON }}' > token.json
 
     - name: Run script
-      run: python votebot.py  # Replace with your script's filename
+      run: python voterbot.py  # Replace with your script's filename
 
     # Optional: Add more steps if needed
