@@ -31,5 +31,7 @@ jobs:
 
     - name: Run script
       run: python voterbot.py  # Replace with your script's filename
+      env:
+        EMAIL: ${{ secrets.EMAIL }}
 
     # Optional: Add more steps if needed
