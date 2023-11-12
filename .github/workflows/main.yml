@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '*/10 * * * *' 
 
+concurrency: 
+  group: votebot-workflow
+  cancel-in-progress: false
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
